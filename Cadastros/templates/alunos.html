@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+
+{% block conteudo %}
+
+{% load static %}
+
+<nav class="navbar bg-dark mb-2" data-bs-theme="dark">
+  <div class="container-fluid">
+    <span class="navbar-brand text-light h1">Cadastro de usuário</span>
+  </div>
+</nav>
+
+
+<div class="card mb-2">
+  <div class="card-header">
+    Pesquisa
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <div class="container mt-1 ">
+        <div class="row g-3">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Nome" aria-label="First name">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Contato" aria-label="Last name">
+          </div>
+          
+          <div class="col">
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Open this select menu</option>
+              <option value="1" selected> Sim </option>
+              <option value="2"> Não </option>
+            </select>
+          </div>
+
+
+          <div class="col">
+            <a href="#"  type="button" class="btn btn-success">
+              Pesquisar
+            </a>
+            <a href="/cadastroAluno"  type="button" class="btn btn-primary">
+              Novo Usuário
+            </a>
+          </div>
+        </div>
+    </blockquote>
+  </div>
+</div>
+
+
+<!-- formulario.html -->
+
+    <table class="table table-dark table-striped  mt-1">
+      <thead>
+        <tr>
+          <th scope="col">cod</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Idade</th>
+          <th scope="col">Peso</th>
+          <th scope="col">Altura</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for aluno in alunos%}
+        <tr>
+          <th>{{aluno.id_Aluno}}</th>
+          <td>{{aluno.Nome}}</td>
+          <td>{{aluno.Idade}}</td>
+          <td>{{aluno.Peso}}</td>
+          <td>{{aluno.Altura}}</td>
+          <td><a href="/editAluno/{{aluno.id_Aluno}}/" class="btn btn-success">Alterar</a></td>
+          <td><a href="/excluiAluno/{{aluno.id_Aluno}}/" type="button" class="btn btn-danger">Deletar</a></td>
+          
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+    
+
+
+
+{% endblock %}

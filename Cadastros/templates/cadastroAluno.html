@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block conteudo %}
+
+<nav class="navbar bg-dark" data-bs-theme="dark">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1 text-light">NOVO ALUNO </span>
+  </div>
+</nav>
+
+<div class="card-body">
+  <div class="container" style="width: 680px;">
+    <form method='POST' action="{% if db %} /atualizaAluno/{{db.id_Aluno}}/ {% else %} /incluiAluno/{% endif %}" class="card p-3" >
+      {% csrf_token %}
+      
+      <div class='row'>
+        <div class='col-6'>
+          {{ form.Nome|as_crispy_field}}
+        </div>
+        <div class='col-6' >
+          {{form.Senha|as_crispy_field}}  
+        </div>
+      </div>
+      <div class='row'>
+        {{ form.Contato|as_crispy_field}}
+      </div>  
+      <div class='row'>
+        <div class='col-4'>
+          {{ form.Peso|as_crispy_field}}
+        </div>
+        <div class='col-4'>
+          {{form.Altura|as_crispy_field}}  
+        </div>
+        <div class='col-4'>
+          {{form.Idade|as_crispy_field}}  
+        </div>
+      </div>  
+        
+      <div class='row'>
+        <div class='col-12'>
+          {{ form.Objetivo|as_crispy_field}}
+        </div>
+      </div>
+        <div class='row'>
+          <div class='col-6'>
+            {{ form.dt_vencimentoPlano|as_crispy_field}}
+          </div>
+          <div class='col-6' style="vertical-align: middle "  >
+            {{form.fl_ativo|as_crispy_field}}  
+          </div>
+      </div>
+      <input type="submit" class="btn btn-primary" value="Gravar">
+  </div>
+</div>
+
+
+
+{% endblock %}
